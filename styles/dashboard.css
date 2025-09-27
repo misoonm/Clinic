@@ -700,3 +700,379 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+
+/* أنماط الوصفات الطبية */
+.prescriptions-module .filters-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.medications-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.medications-table th,
+.medications-table td {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    text-align: right;
+}
+
+.medications-table th {
+    background: var(--light-color);
+    font-weight: 600;
+}
+
+.patient-doctor-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.info-section {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.info-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.doctor-signature {
+    text-align: left;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--border-color);
+}
+
+/* أنماط المختبر */
+.lab-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.lab-tabs .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.tab-link {
+    background: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.tab-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.result-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--success-color);
+}
+
+.result-card .abnormal {
+    border-left-color: var(--danger-color);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.result-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.result-status.normal {
+    background: var(--success-color);
+    color: white;
+}
+
+.result-status.abnormal {
+    background: var(--danger-color);
+    color: white;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.test-name {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.test-value {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.test-range {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.test-type-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.test-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.test-meta .price {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.test-meta .category {
+    background: var(--light-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+/* أنماط التقارير */
+.reports-dashboard .report-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.chart-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.chart-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.report-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.report-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.report-card:hover {
+    transform: translateY(-5px);
+}
+
+.report-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.report-card h4 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.report-card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* أنماط الإعدادات */
+.settings-tabs .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.settings-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.settings-form h3 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--light-color);
+    padding-bottom: 0.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 14px;
+}
+
+.backup-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.backup-list {
+    margin-top: 2rem;
+}
+
+/* أنماط الاستجابة للجوال */
+@media (max-width: 768px) {
+    .patient-doctor-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-card {
+        min-width: auto;
+    }
+    
+    .report-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lab-tabs .tab-nav {
+        flex-direction: column;
+    }
+    
+    .tab-link {
+        text-align: right;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .backup-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .medications-table {
+        font-size: 0.8rem;
+    }
+    
+    .medications-table th,
+    .medications-table td {
+        padding: 0.5rem;
+    }
+    
+    .result-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+}
+
