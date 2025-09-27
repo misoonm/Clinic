@@ -1,0 +1,141 @@
+<div class="invoice-document">
+    <div class="invoice-header">
+        <div class="clinic-info">
+            <h2>{{clinic.name}}</h2>
+            <p>{{clinic.address}}</p>
+            <p>هاتف: {{clinic.phone}} | بريد: {{clinic.email}}</p>
+            {{#if clinic.license}}
+            <p>ترخيص: {{clinic.license}}</p>
+            {{/if}}
+        </div>
+        
+        <div class="invoice-meta">
+            <h1>فاتورة طبية</h1>
+            <table class="meta-table">
+                <tr>
+                    <td>رقم الفاتورة:</td>
+                    <td><strong>{{invoice.number}}</strong></td>
+                </tr>
+                <tr>
+                    <td>التاريخ:</td>
+                    <td>{{invoice.date}}</td>
+                </tr>
+                <tr>
+                    <td>الحالة:</td>
+                    <td><span class="status-{{invoice.status}}">{{invoice.statusText}}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="invoice-patient">
+        <h3>معلومات المريض</h3>
+        <table class="patient-table">
+            <tr>
+                <td>الاسم:</td>
+                <td><strong>{{patient.name}}</strong></td>
+            </tr>
+            <tr>
+                <td>الهاتف:</td>
+                <td>{{patient.phone}}</td>
+            </tr>
+            {{#if patient.nationalId}}
+            <tr>
+                <td>الرقم الوطني:</td>
+                <td>{{patient.nationalId}}</td>
+            </tr>
+            {{/if}}
+        </table>
+    </div>
+
+    <div class="invoice-items">
+        <h3>تفاصيل الخدمات</h3>
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>الخدمة</th>
+                    <th>الكمية</th>
+                    <th>السعر</th>
+                    <th>المجموع</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each items}}
+                <tr>
+                    <td>{{add @index 1}}</td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.quantity}}</td>
+                    <td>{{currency this.price}}</td>
+                    <td>{{currency this.total}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-right">المجموع الفرعي:</td>
+                    <td>{{currency invoice.subtotal}}</td>
+                </tr>
+                {{#if invoice.tax}}
+                <tr>
+                    <td colspan="4" class="text-right">الضريبة ({{invoice.taxRate}}%):</td>
+                    <td>{{currency invoice.tax}}</td>
+                </tr>
+                {{/if}}
+                {{#if invoice.discount}}
+                <tr>
+                    <td colspan="4" class="text-right">الخصم:</td>
+                    <td>-{{currency invoice.discount}}</td>
+                </tr>
+                {{/if}}
+                <tr class="total-row">
+                    <td colspan="4" class="text-right"><strong>الإجمالي:</strong></td>
+                    <td><strong>{{currency invoice.total}}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="invoice-payment">
+        <h3>معلومات الدفع</h3>
+        <table class="payment-table">
+            <tr>
+                <td>طريقة الدفع:</td>
+                <td>{{invoice.paymentMethod}}</td>
+            </tr>
+            {{#if invoice.paidAmount}}
+            <tr>
+                <td>المبلغ المدفوع:</td>
+                <td>{{currency invoice.paidAmount}}</td>
+            </tr>
+            <tr>
+                <td>المبلغ المتبقي:</td>
+                <td>{{currency invoice.balance}}</td>
+            </tr>
+            {{/if}}
+        </table>
+    </div>
+
+    <div class="invoice-footer">
+        <div class="terms">
+            <h4>شروط وأحكام</h4>
+            <p>• يجب سداد الفاتورة خلال 30 يوم من تاريخ الاصدار</p>
+            <p>• للتأكد من صحة الفاتورة يرجى الاتصال بالعيادة</p>
+        </div>
+        
+        <div class="signature">
+            <p>التوقيع: ________________</p>
+            <p>الطبيب: {{doctor.name}}</p>
+            <p>التخصص: {{doctor.specialization}}</p>
+        </div>
+    </div>
+
+    <div class="invoice-actions print-actions">
+        <button class="btn btn-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> طباعة الفاتورة
+        </button>
+        <button class="btn btn-secondary" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i> رجوع
+        </button>
+    </div>
+</div>
