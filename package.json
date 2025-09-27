@@ -1,0 +1,30 @@
+{
+  "name": "clinic-management-system",
+  "version": "2.0.0",
+  "description": "نظام متكامل لإدارة العيادات الطبية",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=index.html",
+    "build": "echo 'No build process needed for static site'",
+    "test": "echo 'No tests specified'",
+    "lint": "eslint js/",
+    "format": "prettier --write js/**/*.js styles/**/*.css"
+  },
+  "keywords": [
+    "clinic",
+    "medical",
+    "management",
+    "hospital",
+    "healthcare"
+  ],
+  "author": "نظام إدارة العيادات",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "live-server": "^1.2.2",
+    "prettier": "^2.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.0.0"
+  }
+}
