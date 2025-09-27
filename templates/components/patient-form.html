@@ -1,0 +1,151 @@
+<div class="modal-overlay">
+    <div class="modal modal-large">
+        <div class="modal-header">
+            <h3>{{title}}</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <form id="patientForm" class="form-vertical">
+                <!-- المعلومات الشخصية -->
+                <div class="form-section">
+                    <h4>المعلومات الشخصية</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل *</label>
+                            <input type="text" id="name" name="name" class="form-input" 
+                                   value="{{patient.name}}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nationalId">الرقم الوطني</label>
+                            <input type="text" id="nationalId" name="nationalId" class="form-input"
+                                   value="{{patient.nationalId}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف *</label>
+                            <input type="tel" id="phone" name="phone" class="form-input"
+                                   value="{{patient.phone}}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" class="form-input"
+                                   value="{{patient.email}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">تاريخ الميلاد</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-input"
+                                   value="{{patient.dateOfBirth}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">الجنس</label>
+                            <select id="gender" name="gender" class="form-select">
+                                <option value="">اختر الجنس</option>
+                                <option value="male" {{#if patient.gender.male}}selected{{/if}}>ذكر</option>
+                                <option value="female" {{#if patient.gender.female}}selected{{/if}}>أنثى</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bloodType">فصيلة الدم</label>
+                            <select id="bloodType" name="bloodType" class="form-select">
+                                <option value="">اختر فصيلة الدم</option>
+                                <option value="A+" {{#if patient.bloodType.A+}}selected{{/if}}>A+</option>
+                                <option value="A-" {{#if patient.bloodType.A-}}selected{{/if}}>A-</option>
+                                <option value="B+" {{#if patient.bloodType.B+}}selected{{/if}}>B+</option>
+                                <option value="B-" {{#if patient.bloodType.B-}}selected{{/if}}>B-</option>
+                                <option value="AB+" {{#if patient.bloodType.AB+}}selected{{/if}}>AB+</option>
+                                <option value="AB-" {{#if patient.bloodType.AB-}}selected{{/if}}>AB-</option>
+                                <option value="O+" {{#if patient.bloodType.O+}}selected{{/if}}>O+</option>
+                                <option value="O-" {{#if patient.bloodType.O-}}selected{{/if}}>O-</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- العنوان -->
+                <div class="form-section">
+                    <h4>معلومات العنوان</h4>
+                    <div class="form-group">
+                        <label for="address">العنوان</label>
+                        <textarea id="address" name="address" class="form-textarea" 
+                                  rows="3">{{patient.address}}</textarea>
+                    </div>
+                </div>
+
+                <!-- التاريخ الطبي -->
+                <div class="form-section">
+                    <h4>التاريخ الطبي</h4>
+                    <div class="form-group">
+                        <label for="medicalHistory">الأمراض المزمنة والحساسية</label>
+                        <textarea id="medicalHistory" name="medicalHistory" class="form-textarea" 
+                                  rows="3">{{patient.medicalHistory}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="allergies">الحساسيات</label>
+                        <textarea id="allergies" name="allergies" class="form-textarea" 
+                                  rows="2">{{patient.allergies}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currentMedications">الأدوية الحالية</label>
+                        <textarea id="currentMedications" name="currentMedications" class="form-textarea" 
+                                  rows="2">{{patient.currentMedications}}</textarea>
+                    </div>
+                </div>
+
+                <!-- معلومات إضافية -->
+                <div class="form-section">
+                    <h4>معلومات إضافية</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="emergencyContact">جهة الاتصال في الطوارئ</label>
+                            <input type="text" id="emergencyContact" name="emergencyContact" class="form-input"
+                                   value="{{patient.emergencyContact}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emergencyPhone">هاتف الطوارئ</label>
+                            <input type="tel" id="emergencyPhone" name="emergencyPhone" class="form-input"
+                                   value="{{patient.emergencyPhone}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="insuranceCompany">شركة التأمين</label>
+                            <input type="text" id="insuranceCompany" name="insuranceCompany" class="form-input"
+                                   value="{{patient.insuranceCompany}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="insuranceNumber">رقم التأمين</label>
+                            <input type="text" id="insuranceNumber" name="insuranceNumber" class="form-input"
+                                   value="{{patient.insuranceNumber}}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الحالة -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="isActive" name="isActive" 
+                                   {{#if patient.isActive}}checked{{/if}}>
+                            <span class="checkmark"></span>
+                            المريض نشط
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cancelBtn">إلغاء</button>
+            <button type="button" class="btn btn-primary" id="saveBtn">حفظ</button>
+        </div>
+    </div>
+</div>
