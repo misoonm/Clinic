@@ -1,0 +1,130 @@
+<div class="modal-overlay">
+    <div class="modal modal-large">
+        <div class="modal-header">
+            <h3>{{title}}</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <form id="appointmentForm" class="form-vertical">
+                <!-- المعلومات الأساسية -->
+                <div class="form-section">
+                    <h4>معلومات الموعد</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="patientId">المريض *</label>
+                            <select id="patientId" name="patientId" class="form-select" required>
+                                <option value="">اختر المريض</option>
+                                {{#each patients}}
+                                <option value="{{this.id}}" {{#if this.selected}}selected{{/if}}>
+                                    {{this.name}} - {{this.phone}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctorId">الطبيب *</label>
+                            <select id="doctorId" name="doctorId" class="form-select" required>
+                                <option value="">اختر الطبيب</option>
+                                {{#each doctors}}
+                                <option value="{{this.id}}" {{#if this.selected}}selected{{/if}}>
+                                    {{this.fullName}} - {{this.specialization}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentDate">التاريخ *</label>
+                            <input type="date" id="appointmentDate" name="date" class="form-input"
+                                   value="{{appointment.date}}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentTime">الوقت *</label>
+                            <input type="time" id="appointmentTime" name="time" class="form-input"
+                                   value="{{appointment.time}}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duration">المدة (دقيقة) *</label>
+                            <input type="number" id="duration" name="duration" class="form-input"
+                                   value="{{appointment.duration}}" min="15" max="120" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">نوع الموعد</label>
+                            <select id="type" name="type" class="form-select">
+                                <option value="">اختر نوع الموعد</option>
+                                {{#each appointmentTypes}}
+                                <option value="{{this}}" {{#if this.selected}}selected{{/if}}>{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التفاصيل الإضافية -->
+                <div class="form-section">
+                    <h4>تفاصيل إضافية</h4>
+                    <div class="form-group">
+                        <label for="reason">سبب الزيارة</label>
+                        <textarea id="reason" name="reason" class="form-textarea" 
+                                  rows="3" placeholder="وصف سبب زيارة المريض">{{appointment.reason}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">ملاحظات</label>
+                        <textarea id="notes" name="notes" class="form-textarea" 
+                                  rows="2" placeholder="أي ملاحظات إضافية">{{appointment.notes}}</textarea>
+                    </div>
+                </div>
+
+                <!-- الإعدادات -->
+                <div class="form-section">
+                    <h4>إعدادات الموعد</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="status">حالة الموعد</label>
+                            <select id="status" name="status" class="form-select">
+                                <option value="scheduled" {{#if appointment.status.scheduled}}selected{{/if}}>مجدول</option>
+                                <option value="confirmed" {{#if appointment.status.confirmed}}selected{{/if}}>مؤكد</option>
+                                <option value="cancelled" {{#if appointment.status.cancelled}}selected{{/if}}>ملغى</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">الأولوية</label>
+                            <select id="priority" name="priority" class="form-select">
+                                <option value="normal" {{#if appointment.priority.normal}}selected{{/if}}>عادية</option>
+                                <option value="high" {{#if appointment.priority.high}}selected{{/if}}>عالية</option>
+                                <option value="urgent" {{#if appointment.priority.urgent}}selected{{/if}}>طارئة</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="sendReminder" name="sendReminder"
+                                       {{#if appointment.sendReminder}}checked{{/if}}>
+                                <span class="checkmark"></span>
+                                إرسال تذكير للمريض
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- معلومات التعارض -->
+                <div id="conflictWarning" class="alert alert-warning hidden">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="conflictMessage">يوجد تعارض في المواعيد</span>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cancelBtn">إلغاء</button>
+            <button type="button" class="btn btn-primary" id="saveBtn">حفظ الموعد</button>
+        </div>
+    </div>
+</div>
