@@ -1,0 +1,95 @@
+<div class="report-container">
+    <div class="report-header">
+        <h1>التقرير المالي</h1>
+        <div class="report-meta">
+            <p>الفترة: {{startDate}} إلى {{endDate}}</p>
+            <p>تاريخ الإصدار: {{reportDate}}</p>
+        </div>
+    </div>
+
+    <div class="report-summary">
+        <div class="summary-cards">
+            <div class="summary-card revenue">
+                <div class="card-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="card-content">
+                    <h3>{{currency totalRevenue}}</h3>
+                    <p>إجمالي الإيرادات</p>
+                </div>
+            </div>
+
+            <div class="summary-card invoices">
+                <div class="card-icon">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="card-content">
+                    <h3>{{totalInvoices}}</h3>
+                    <p>عدد الفواتير</p>
+                </div>
+            </div>
+
+            <div class="summary-card average">
+                <div class="card-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="card-content">
+                    <h3>{{currency averageInvoice}}</h3>
+                    <p>متوسط الفاتورة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="report-charts">
+        <div class="chart-section">
+            <h3>الإيرادات الشهرية</h3>
+            <canvas id="revenueChart" width="400" height="200"></canvas>
+        </div>
+
+        <div class="chart-section">
+            <h3>توزيع الإيرادات حسب الخدمة</h3>
+            <canvas id="servicesChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <div class="report-details">
+        <h3>تفاصيل الفواتير</h3>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>رقم الفاتورة</th>
+                    <th>التاريخ</th>
+                    <th>المريض</th>
+                    <th>الخدمات</th>
+                    <th>المبلغ</th>
+                    <th>الحالة</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each invoices}}
+                <tr>
+                    <td>{{this.number}}</td>
+                    <td>{{this.date}}</td>
+                    <td>{{this.patient}}</td>
+                    <td>{{this.services}}</td>
+                    <td>{{currency this.amount}}</td>
+                    <td><span class="status-{{this.status}}">{{this.statusText}}</span></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="report-actions">
+        <button class="btn btn-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> طباعة التقرير
+        </button>
+        <button class="btn btn-secondary" onclick="exportToExcel()">
+            <i class="fas fa-download"></i> تصدير لإكسل
+        </button>
+        <button class="btn btn-outline" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i> رجوع
+        </button>
+    </div>
+</div>
